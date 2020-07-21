@@ -28,7 +28,11 @@ channels = int(parameters[0]) # number of filters, useful to separate params
 median_seeing = parameters[1:1+channels] # median seeing (FWHM) in arcsec
 noise_background = parameters[1+channels:1+2*channels] # noise background level
 noise_std = parameters[1+2*channels:1+3*channels] # noise standard deviation
-pixel_scale = parameters[-1] # pixel scale: arcsec per pixel
+pixel_scale = parameters[-2] # pixel scale: arcsec per pixel
+final_size = int(parameters[-1]) # size of processed .fits files. Images that
+    # are smaller than this level are padded with random noise. Images that
+    # are larger than this threshold are discarded (motivated by efficiency
+    # concerns for CNN)
 
 # convert useful quantities
 FWHM_pix = median_seeing * pixel_scale # median seeing, pixels
@@ -50,6 +54,7 @@ def convolve_PSF(image):
         convolution
     """
     channels = np.shape(image)[0] # assume channels are listed first
+    # create an array to store results of convolution
     convolved_image = np.zeros(shape=np.shape(image))
     for channel in range(channels):
         # default size of PSF kernel is 8 times std in each direction
@@ -60,7 +65,7 @@ def convolve_PSF(image):
     return convolved_image
 
 
-def noise_modelling(image, noise_background, noise_std):
+def noise_modelling(image, final_size, noise_background, noise_std):
     """
     Incorporates sky background noise into a synthetic image. The noise is 
     sampled from a Gaussian distribution for which the mean and the
@@ -69,6 +74,8 @@ def noise_modelling(image, noise_background, noise_std):
     Parameters:
     image : array of shape (channels, N, N), assuming that the first value is
         the number of filters (channels)
+    final_size : integer M >= N: processed images will have shape 
+        (channels, M, M)
     noise_background : array with mean values of the noise distribution for 
         each filter
     noise_std : array with standard deviations of the noise distribution for
@@ -78,17 +85,30 @@ def noise_modelling(image, noise_background, noise_std):
     noisy_image : array of shape (channels, N, N) with the noise contribution
     """
     channels = np.shape(image)[0] # assume channels are listed first
-    noisy_image = np.zeros(shape=np.shape(image))
+    # create array to store results of noise modelling and padding
+    noisy_image = np.zeros(shape=(channels, final_size, final_size))
     for channel in range(channels):
-        noisy_image[channel] += image[channel] + np.random.normal(
-            noise_background[channel], noise_std[channel], (np.shape(image)[1], 
-                                          np.shape(image)[2]))
-    noisy_image[noisy_image < 0] = 0 # set all values below 0 to 0 (no negative
-        # value present before addition of random noise)
+        initial_size = np.shape(image[channel])[-1]
+        if final_size == initial_size:
+            noisy_image[channel] += image[channel]
+        # padding is done slightly differently depending on whether the
+            # difference between the initial/final image size is even or odd
+        elif (final_size - initial_size) % 2 == 0: # even case
+            noisy_image[channel] = np.pad(image[channel], int((
+                final_size-initial_size)/2), mode='constant',constant_values=0)
+        else: # odd case
+            noisy_image[channel] = np.pad(image[channel], (int((
+                final_size-initial_size)/2 - 0.5), int((
+                final_size-initial_size)/2 + 0.5)), mode='constant', 
+                constant_values=0)
+        # add noise sampled from a normal distribution to the padded image
+        noisy_image[channel] += np.random.normal(noise_background[channel], 
+                                 noise_std[channel], (final_size, final_size))
+    noisy_image[noisy_image < 0] = 0 # set all values below 0 to 0
     return noisy_image
 
 
-def image_postprocessing(image, noise_background, noise_std):
+def image_postprocessing(image, final_size, noise_background, noise_std):
     """
     Carries out the post processing steps required to prepare a synthetic image
     for use in the Convolutional Neural Network model. Calls the convolve_PSF
@@ -98,6 +118,8 @@ def image_postprocessing(image, noise_background, noise_std):
     Parameters:
     image : array of shape (channels, N, N), assuming that the first value is
         the number of filters (channels)
+    final_size : integer M >= N: processed images will have shape 
+        (channels, M, M)
     noise_background : array with mean values of the noise distribution for 
         each filter
     noise_std : array with standard deviations of the noise distribution for
@@ -108,10 +130,11 @@ def image_postprocessing(image, noise_background, noise_std):
         processed image
     """
     convolved_image = convolve_PSF(image)
-    noisy_convolved_image = noise_modelling(convolved_image, noise_background, 
-                                            noise_std)
+    noisy_convolved_image = noise_modelling(convolved_image, final_size, 
+                                            noise_background, noise_std)
     channels = np.shape(noisy_convolved_image)[0]
-    processed_image = np.zeros(shape=(np.shape(image)))
+    # create array to store results of rescaling of data
+    processed_image = np.zeros(shape=(channels, final_size, final_size))
     for channel in range(channels):
         processed_image[channel] = noisy_convolved_image[channel]/np.max(
             noisy_convolved_image[channel])
@@ -126,6 +149,11 @@ for file in os.listdir('.'):
     if file.startswith('broadband') and file.endswith('.fits'):
         hdul = fits.open(file)
         data = hdul[0].data
-        hdul[0].data = image_postprocessing(data, noise_background, noise_std)
-        hdul.writeto('processed_'+file) # write changes to new fits file
+        # .fits files that are larger than the selected size are ignored
+        if np.shape(data)[-1] > final_size:
+            pass
+        else:
+            hdul[0].data = image_postprocessing(data, final_size, 
+                                                noise_background, noise_std)
+            hdul.writeto('processed_'+file) # write changes to new fits file
         
