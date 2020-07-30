@@ -21,7 +21,7 @@ test_data_dir = './test_dir'
 
 # get shape of images from first testing image (assumed same for all 
     # testing images)
-file_shape = np.shape(fits.getdata(os.listdir(test_data_dir)[0]))
+file_shape = np.shape(fits.getdata(test_data_dir + '/' + os.listdir(test_data_dir)[0]))
 
 # create 4D arrays to which the images will be assigned: arrays will be fed
     # into the CNN
@@ -30,17 +30,17 @@ test_data = np.zeros(shape=(len(os.listdir(test_data_dir)), file_shape[0],
 
 # assign training data to 4D array and create array of training labels
 test_label_file = 'test_dir_Labels.csv' # file with file name/ label pairs
-test_label_data = np.genfromtxt(test_label_file, delimiter=',', skip_header=1)
+test_label_data = np.genfromtxt(test_label_file, delimiter=',', skip_header=1, dtype=None)
 # create array to store labels of the testing images
-test_labels = np.zeros(shape=(len(test_label_data[:,0])))
+test_labels = np.zeros(shape=(len(test_label_data)))
 # loop through file name/ label pairs: assing label to label array and data 
     # from file to 4D data array, guaranteeing that entries with the same index
     # in both arrays correspond to the same file
 for index, row in enumerate(test_label_data):
   filename, label = row
-  data = fits.getdata(test_data_dir+'/'+filename)
+  data = fits.getdata(test_data_dir+'/'+filename.decode("utf-8"))
   test_data[index] = data
-  test_labels[index] = label
+  test_labels[index] = int(label)
 
 
 # define the path to the checkpoint as defined in training script

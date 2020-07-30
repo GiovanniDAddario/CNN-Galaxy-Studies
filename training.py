@@ -26,7 +26,7 @@ val_data_dir = './val_dir'
 
 # get shape of images from first training image (assumed same for all 
     # validation/training images)
-file_shape = np.shape(fits.getdata(os.listdir(train_data_dir)[0]))
+file_shape = np.shape(fits.getdata(train_data_dir + '/' + os.listdir(train_data_dir)[0]))
 
 # create 4D arrays to which the images will be assigned: arrays will be fed
     # into the CNN
@@ -38,32 +38,33 @@ val_data = np.zeros(shape=(len(os.listdir(val_data_dir)), file_shape[0],
 # assign training data to 4D array and create array of training labels
 train_label_file = 'train_dir_Labels.csv' # file with file name/ label pairs
 train_label_data = np.genfromtxt(train_label_file, delimiter=',',
-                                    skip_header=1)
+                                    skip_header=1, dtype=None)
 # create array to store labels of the training images
-train_labels = np.zeros(shape=(len(train_label_data[:,0])))
+train_labels = np.zeros(shape=(len(train_label_data)))
 # loop through file name/ label pairs: assing label to label array and data 
     # from file to 4D data array, guaranteeing that entries with the same index
     # in both arrays correspond to the same file
 for index, row in enumerate(train_label_data):
     filename, label = row
-    data = fits.getdata(train_data_dir+'/'+filename)
+    data = fits.getdata(train_data_dir+'/'+filename.decode("utf-8"))
     train_data[index] = data
-    train_labels[index] = label
+    train_labels[index] = int(label)
   
 # assign validation data to 4D array and create array of validation labels
 val_label_file = 'val_dir_Labels.csv' # file with file name/ label pairs
-val_label_data = np.genfromtxt(val_label_file,  delimiter=',', skip_header=1)
+val_label_data = np.genfromtxt(val_label_file,  delimiter=',', skip_header=1, dtype=None)
 # create array to store labels of the validation images
-val_labels = np.zeros(shape=(len(val_label_data[:,0])))
+val_labels = np.zeros(shape=(len(val_label_data)))
 # loop through file name/ label pairs: assing label to label array and data 
     # from file to 4D data array, guaranteeing that entries with the same index
     # in both arrays correspond to the same file
 for index, row in enumerate(val_label_data):
     filename, label = row
-    data = fits.getdata(val_data_dir+'/'+filename)
+    data = fits.getdata(val_data_dir+'/'+filename.decode("utf-8"))
     val_data[index] = data
-    val_labels[index] = label
+    val_labels[index] = int(label)
 
+print('Data loaded ok')
 
 def cnn_model():
     """
