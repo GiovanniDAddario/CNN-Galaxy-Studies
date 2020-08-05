@@ -14,9 +14,11 @@ then
         mkdir val_dir
 fi 
 
-# for index, file in enumerate(len(directory)): if index < 80% len(directory) send to train, if 80-90 % send to validation else test
+#  for each file, pick a randon number 0-9: if 0-7, send processed file to training directory
+	# if 8, send file to validation directory
+	# if 9, send file to testing directory
 
-FILES=./*.txt
+FILES=./*.fits
 range=10
 
 for f in $FILES
