@@ -1,0 +1,6 @@
+Changes from run 2 to run 3:
+
+Commented out all lines with matplotlib functions; print accuracies instead of plotting them.
+Removed one pooling and one 2D conv layers : this meant that there were too many parameters to fit,
+	causing the memory error seen in nohup.out file (i think).
+Did not attempt the unset LD_LIBRARY_PATH command before running

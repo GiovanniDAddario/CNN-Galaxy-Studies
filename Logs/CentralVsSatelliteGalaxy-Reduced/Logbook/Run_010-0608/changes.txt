@@ -1,0 +1,3 @@
+Changes from run 9 to 10:
+
+Reduce learning rate to 0.001

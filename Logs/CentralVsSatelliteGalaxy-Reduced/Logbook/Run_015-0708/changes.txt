@@ -1,0 +1,3 @@
+Changes from run 14 to 15:
+Set learning rate to 1e-9; previous run went too far, now all zeros in validation/training predictions (see nohup.out of
+previous run)

@@ -1,0 +1,6 @@
+Changes from run 5 to run 6:
+
+Reinstated z band images.
+Printing predictions for validation data (a 0 or 1) to see how they are all being classified --> could they all be
+classified as a 0 or 1, giving constant accuracy?
+

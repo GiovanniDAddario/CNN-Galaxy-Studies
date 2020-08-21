@@ -1,0 +1,5 @@
+Changes from run 1 to 2:
+Next big run: made some tweaks based on config of run 26 in Central vs Satellite Reduced, mainly to try an improve
+performance in the Central Vs Satellite study rather than in the Colour classification. However, seemed correct
+to apply same model here to see what happens.
+Tweaked architecture of CNN w.r.t run 1, added lr decay, raised initial lr.

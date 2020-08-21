@@ -1,0 +1,4 @@
+Changes from run 6 to 7:
+Run 6 had to be interrupted for excessive memory consumption. Therefore, now not running a Galaxy colour classification
+at the same time; also removed lr decay as that seemed to really slow down the process. Have changed architecture
+slightly (lr, dropout rate, filter sizes) to match run 28 in central vs satellite reduced.

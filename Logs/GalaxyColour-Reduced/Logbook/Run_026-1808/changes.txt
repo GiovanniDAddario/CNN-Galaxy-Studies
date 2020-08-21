@@ -1,0 +1,2 @@
+Changes from run 25 to 26:
+Reintroduce lr rate decay. Tweak cnn architecture (kernel sizes etc)

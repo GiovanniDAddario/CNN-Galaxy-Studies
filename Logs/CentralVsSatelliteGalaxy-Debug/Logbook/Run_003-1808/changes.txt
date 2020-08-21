@@ -1,0 +1,9 @@
+Changes from run 2 to 3:
+Used cnn model used in GalaxyColourClassifier run 1 to see if it changes anything. Basically, I don't understand/like
+the fact that in previous runs the validation data was correctly classified; I thought the training accuracy would be
+100% and the validation accuracy would be 0% as the network 'expects' the training file.
+
+On second thought, I think it's fine as it stands: network does 'expect' the training file and hence it classifies the 
+validation file in the same way as the training one and, as they do have the same label, the accuracy is 100%.
+Then, when it is tested on unseen data, it yields an accuracy of 0% as is throws out the same label as the training image
+but the testing images have the opposite label. So I think it's ok. Help.

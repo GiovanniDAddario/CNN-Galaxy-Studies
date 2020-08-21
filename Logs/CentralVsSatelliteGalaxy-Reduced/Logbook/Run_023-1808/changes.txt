@@ -1,0 +1,4 @@
+Changes from run 22 to 23:
+Use cnn model and training script defined in Central vs Satellite Run 5 (albeit with 10 training epochs as opposed to 20)
+on reduced dataset to have some sort of benchmark for further changes to cnn.py so can judge if something will work better
+on the larger set.

@@ -1,0 +1,4 @@
+Changes from run 5 to 6:
+Next big run: use architecture from Central vs Satellite Reduced run 26 (N.B. did lower decay rate here).
+W.r.t. run 5 have introduced: lr decay, higher initial lr, very slight changes to architecture, increase 
+training epochs to 40.

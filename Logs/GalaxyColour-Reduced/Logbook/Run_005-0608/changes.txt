@@ -1,0 +1,5 @@
+Changes from run 5 to 6:
+
+First attempts to improve performance of model on training and validation sets
+
+Remove z band data (see ILLUSTRIS data specification for justification)

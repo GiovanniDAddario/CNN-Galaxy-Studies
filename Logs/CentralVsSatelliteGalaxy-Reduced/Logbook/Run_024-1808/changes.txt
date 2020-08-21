@@ -1,0 +1,3 @@
+Changes from run 23 to run 24:
+Using same cnn model, try to implement learning rate decay. Had a couple runs before this but terminated them as they weren't
+going anywhere.

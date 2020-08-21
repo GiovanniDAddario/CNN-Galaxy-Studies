@@ -1,0 +1,5 @@
+Changes from run 6 to 7:
+
+From previous run, see that all images are being given the classification of 0, hence why the accuracy is constant.
+First attempt to fix: start setting learning rate and vary it
+start from learning rate = 1

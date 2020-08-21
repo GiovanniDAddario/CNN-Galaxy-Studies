@@ -1,0 +1,3 @@
+Changes from run 24 to 25:
+Removed lr decay.
+Tried to use a different loss function but the error in nohup.out came up --> something worth checking.

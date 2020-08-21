@@ -1,0 +1,3 @@
+Changes from run 13 to 14:
+Some positive results from last run, so increase learning rate even further to 1e-10
+

@@ -1,0 +1,4 @@
+Changes from run 3 to 4:
+
+Had forgotten about error caused by matplotlib in training script (see first runs in CentralVsSatelliteGalaxy/Logbook)
+Remove that, print the accuracies and plot in separate script for now.

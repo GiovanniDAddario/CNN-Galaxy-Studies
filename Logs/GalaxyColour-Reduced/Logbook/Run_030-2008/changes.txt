@@ -1,0 +1,2 @@
+Changes from run 29 to 30:
+Remove batch training. First attempt at using a custom callback.

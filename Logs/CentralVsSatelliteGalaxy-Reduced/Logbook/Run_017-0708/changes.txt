@@ -1,0 +1,2 @@
+Changes from run 16 to 17:
+Learning rate = 1e-6

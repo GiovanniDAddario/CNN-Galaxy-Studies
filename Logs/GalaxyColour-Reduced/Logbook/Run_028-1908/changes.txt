@@ -1,0 +1,3 @@
+Changes from run 27 to run 28:
+Increase dropout rates for convolutional layers and double training epochs to 20.
+

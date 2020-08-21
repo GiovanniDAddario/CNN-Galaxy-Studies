@@ -1,0 +1,7 @@
+Galaxy colour classification on larger data set (compared to GalaxyColourClassifier-Reduced) using the model which
+performed best on the smaller data set. Key features:
+Model with 4 convolutional layers (changes filter size slightly with respect to first efforts found in Central Vs
+Satellite study). Added dropout layers with 0.2 dropout rate compared to earlier models.
+Relu activations, apart from last layer which has a sigmoid activation perform classification.
+Learning rate of adam optimiser set to 1e-5.
+20 training epochs.

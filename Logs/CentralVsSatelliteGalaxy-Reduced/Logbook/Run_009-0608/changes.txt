@@ -1,0 +1,3 @@
+Changes from run 8 to run 9:
+Decrease learning rate to 0.01
+Saw from previous run that training images are also being classified all in the same way

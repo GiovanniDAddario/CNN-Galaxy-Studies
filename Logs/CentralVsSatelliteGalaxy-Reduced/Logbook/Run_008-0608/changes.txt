@@ -1,0 +1,3 @@
+Changes from run 7 to 8:
+decrease learning rate to 0.1
+add print statement with predictions for training images, before was just validation

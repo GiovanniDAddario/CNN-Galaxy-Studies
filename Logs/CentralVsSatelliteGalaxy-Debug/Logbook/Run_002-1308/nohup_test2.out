@@ -1,0 +1,29 @@
+2020-08-13 11:46:09.664828: I tensorflow/core/platform/cpu_feature_guard.cc:141] Your CPU supports instructions that this TensorFlow binary was not compiled to use: SSE4.1 SSE4.2 AVX AVX2 FMA
+2020-08-13 11:46:09.673129: I tensorflow/core/common_runtime/process_util.cc:69] Creating new thread pool with default inter op setting: 2. Tune using inter_op_parallelism_threads for best performance.
+start
+data_loaded
+checkpoint_found
+model_found
+weights_loaded
+1/1 [==============================] - 1s 510ms/step
+
+Restored model, accuracy:  0.00%
+1/1 [==============================] - 0s 23ms/step
+
+Restored model, accuracy:  0.00%
+1/1 [==============================] - 0s 16ms/step
+
+Restored model, accuracy:  0.00%
+1/1 [==============================] - 0s 15ms/step
+
+Restored model, accuracy:  0.00%
+1/1 [==============================] - 0s 14ms/step
+
+Restored model, accuracy:  0.00%
+1/1 [==============================] - 0s 14ms/step
+testing.py:33: VisibleDeprecationWarning: Reading unicode strings without specifying the encoding argument is deprecated. Set the encoding, use None for the system default.
+  test_label_data = np.genfromtxt(test_label_file, delimiter=',', skip_header=1, dtype=None)
+
+Restored model, accuracy:  0.00%
+
+Testing: elapsed 1.172 seconds.

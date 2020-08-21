@@ -1,0 +1,80 @@
+2020-08-12 12:32:46.478446: I tensorflow/core/platform/cpu_feature_guard.cc:141] Your CPU supports instructions that this TensorFlow binary was not compiled to use: SSE4.1 SSE4.2 AVX AVX2 FMA
+2020-08-12 12:32:46.481662: I tensorflow/core/common_runtime/process_util.cc:69] Creating new thread pool with default inter op setting: 2. Tune using inter_op_parallelism_threads for best performance.
+Training data shape:  (1, 4, 100, 100)
+model defined
+_________________________________________________________________
+Layer (type)                 Output Shape              Param #   
+=================================================================
+conv2d (Conv2D)              (None, 100, 97, 97)       6500      
+_________________________________________________________________
+max_pooling2d (MaxPooling2D) (None, 100, 48, 48)       0         
+_________________________________________________________________
+conv2d_1 (Conv2D)            (None, 200, 45, 45)       320200    
+_________________________________________________________________
+max_pooling2d_1 (MaxPooling2 (None, 200, 22, 22)       0         
+_________________________________________________________________
+conv2d_2 (Conv2D)            (None, 200, 19, 19)       640200    
+_________________________________________________________________
+max_pooling2d_2 (MaxPooling2 (None, 200, 9, 9)         0         
+_________________________________________________________________
+conv2d_3 (Conv2D)            (None, 200, 6, 6)         640200    
+_________________________________________________________________
+flatten (Flatten)            (None, 7200)              0         
+_________________________________________________________________
+dense (Dense)                (None, 200)               1440200   
+_________________________________________________________________
+dense_1 (Dense)              (None, 2)                 402       
+=================================================================
+Total params: 3,047,702
+Trainable params: 3,047,702
+Non-trainable params: 0
+_________________________________________________________________
+None
+Train on 1 samples, validate on 1 samples
+Epoch 1/20
+1/1 [==============================] - 2s 2s/step - loss: 12.5926 - acc: 0.0000e+00 - val_loss: 11.9747 - val_acc: 0.0000e+00
+Epoch 2/20
+1/1 [==============================] - 0s 83ms/step - loss: 11.9914 - acc: 0.0000e+00 - val_loss: 11.0308 - val_acc: 0.0000e+00
+Epoch 3/20
+1/1 [==============================] - 0s 72ms/step - loss: 10.5809 - acc: 0.0000e+00 - val_loss: 0.6931 - val_acc: 0.0000e+00
+Epoch 4/20
+1/1 [==============================] - 0s 69ms/step - loss: 0.6931 - acc: 0.0000e+00 - val_loss: 0.6931 - val_acc: 0.0000e+00
+Epoch 5/20
+1/1 [==============================] - 0s 67ms/step - loss: 0.6931 - acc: 1.0000 - val_loss: 0.6931 - val_acc: 1.0000
+Epoch 6/20
+1/1 [==============================] - 0s 70ms/step - loss: 0.6931 - acc: 1.0000 - val_loss: 0.6931 - val_acc: 1.0000
+Epoch 7/20
+1/1 [==============================] - 0s 67ms/step - loss: 0.6931 - acc: 1.0000 - val_loss: 0.6931 - val_acc: 1.0000
+Epoch 8/20
+1/1 [==============================] - 0s 71ms/step - loss: 0.6931 - acc: 1.0000 - val_loss: 0.6931 - val_acc: 1.0000
+Epoch 9/20
+1/1 [==============================] - 0s 70ms/step - loss: 0.6931 - acc: 1.0000 - val_loss: 0.6931 - val_acc: 1.0000
+Epoch 10/20
+1/1 [==============================] - 0s 66ms/step - loss: 0.6931 - acc: 1.0000 - val_loss: 0.6931 - val_acc: 1.0000
+Epoch 11/20
+1/1 [==============================] - 0s 65ms/step - loss: 0.6931 - acc: 1.0000 - val_loss: 0.6931 - val_acc: 1.0000
+Epoch 12/20
+1/1 [==============================] - 0s 70ms/step - loss: 0.6931 - acc: 1.0000 - val_loss: 0.6931 - val_acc: 1.0000
+Epoch 13/20
+1/1 [==============================] - 0s 74ms/step - loss: 0.6931 - acc: 1.0000 - val_loss: 0.6931 - val_acc: 1.0000
+Epoch 14/20
+1/1 [==============================] - 0s 69ms/step - loss: 0.6931 - acc: 1.0000 - val_loss: 0.6931 - val_acc: 1.0000
+Epoch 15/20
+1/1 [==============================] - 0s 66ms/step - loss: 0.6931 - acc: 1.0000 - val_loss: 0.6931 - val_acc: 1.0000
+Epoch 16/20
+1/1 [==============================] - 0s 71ms/step - loss: 0.6931 - acc: 1.0000 - val_loss: 0.6931 - val_acc: 1.0000
+Epoch 17/20
+1/1 [==============================] - 0s 68ms/step - loss: 0.6931 - acc: 1.0000 - val_loss: 0.6931 - val_acc: 1.0000
+Epoch 18/20
+1/1 [==============================] - 0s 74ms/step - loss: 0.6931 - acc: 1.0000 - val_loss: 0.6931 - val_acc: 1.0000
+Epoch 19/20
+1/1 [==============================] - 0s 67ms/step - loss: 0.6931 - acc: 1.0000 - val_loss: 0.6931 - val_acc: 1.0000
+Epoch 20/20
+1/1 [==============================] - 0s 68ms/step - loss: 0.6931 - acc: 1.0000 - val_loss: 0.6931 - val_acc: 1.0000
+training.py:41: VisibleDeprecationWarning: Reading unicode strings without specifying the encoding argument is deprecated. Set the encoding, use None for the system default.
+  skip_header=1, dtype=None)
+training.py:57: VisibleDeprecationWarning: Reading unicode strings without specifying the encoding argument is deprecated. Set the encoding, use None for the system default.
+  val_label_data = np.genfromtxt(val_label_file,  delimiter=',', skip_header=1, dtype=None)
+model trained
+Accuracy  [0.0, 0.0, 0.0, 0.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0]
+Val accuracy:  [0.0, 0.0, 0.0, 0.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0]

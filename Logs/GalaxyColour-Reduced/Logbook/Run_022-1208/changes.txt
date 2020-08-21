@@ -1,0 +1,5 @@
+Changes from run 21 to 22:
+When import function from another script, the whole script is executed, hence why training was being repeated at the
+beginning of the testing script in runs 20 and 21.
+Attempted solution:
+move cnn model to separate script (cnn.py) and call that in both the training and testing scripts

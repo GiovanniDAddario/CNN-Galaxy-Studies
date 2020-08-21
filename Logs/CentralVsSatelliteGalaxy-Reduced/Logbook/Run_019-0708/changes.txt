@@ -1,0 +1,5 @@
+Changes from run 18 to 19:
+Change training epochs from 10 to 20
+Lr = 1e-5
+
+( had initially set epochs to 50 and used lr from run 18 but terminated it as saw it wasn't doing anything useful)

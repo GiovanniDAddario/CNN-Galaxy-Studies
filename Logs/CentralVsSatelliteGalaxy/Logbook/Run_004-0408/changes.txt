@@ -1,0 +1,6 @@
+Changes from run 3 to 4:
+
+Matplotlib parts still commented out, printing accuracies
+Reinstated the pooling layer and conv 2d layer that were commented out; added one more of each in the hope
+	of reducing parameters to fit - run time
+

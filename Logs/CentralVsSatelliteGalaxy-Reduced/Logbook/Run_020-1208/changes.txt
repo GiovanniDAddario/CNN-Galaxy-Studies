@@ -1,0 +1,3 @@
+Changes from run 19 to 20:
+Start working on getting testing script to run
+Training : set lr to 1e-5 and epochs back to 10

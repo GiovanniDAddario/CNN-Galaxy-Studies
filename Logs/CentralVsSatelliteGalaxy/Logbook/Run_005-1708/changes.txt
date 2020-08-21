@@ -1,0 +1,7 @@
+Changes from run 4 to 5:
+Long time since last run in this study; more progress has been made in the '-Reduced' directory of this study and
+in the Galaxy Colour classification studies (mainly in the '-Reduced' directory again).
+Info of this run; now have cnn model outside of training script.
+Have set this up in same way as Run_001-1708 of GalaxyColourClassifier; only difference is that there I used 'Adam' 
+optimizer, here used 'SGD'. IMPORTANT - given than Adam had given results for colour, decided to terminate run and
+set it off again with Adam optimiser. See cnn.py for architecture.

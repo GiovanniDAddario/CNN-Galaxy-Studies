@@ -1,0 +1,3 @@
+Changes from previous run:
+Had issues with Qt: think caused by matplotlib. Tried following command before setting off the training script for Run 2:
+unset LD_LIBRARY_PATH

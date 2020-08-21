@@ -1,0 +1,4 @@
+Changes from run 20 to 21:
+In previous run, testing seemed to work but apparently repeated the training?
+Rerun with same training settings but try to understand what it was doing by adding some
+print statements to testing script.

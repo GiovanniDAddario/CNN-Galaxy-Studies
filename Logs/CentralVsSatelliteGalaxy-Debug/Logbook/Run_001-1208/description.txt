@@ -1,0 +1,5 @@
+First step in debugging CNN performance; check performance with single image. Should give 100% accuracy on training set.
+Unfortunately, forgot to copy training script here, as heavily modified with respect to the others in the other
+CentralVsSatelliteGalaxy directories. However, a version of it is present in the run 2 directory; this is similar to the one
+used in this run. The only difference is that there the cnn model is imported from a third script rather than defined
+in the training script.

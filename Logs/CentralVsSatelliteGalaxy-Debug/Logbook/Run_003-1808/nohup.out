@@ -1,0 +1,126 @@
+2020-08-18 10:54:03.161432: I tensorflow/core/platform/cpu_feature_guard.cc:141] Your CPU supports instructions that this TensorFlow binary was not compiled to use: SSE4.1 SSE4.2 AVX AVX2 FMA
+2020-08-18 10:54:03.164536: I tensorflow/core/common_runtime/process_util.cc:69] Creating new thread pool with default inter op setting: 2. Tune using inter_op_parallelism_threads for best performance.
+_________________________________________________________________
+Layer (type)                 Output Shape              Param #   
+=================================================================
+conv2d (Conv2D)              (None, 100, 98, 98)       3700      
+_________________________________________________________________
+dropout (Dropout)            (None, 100, 98, 98)       0         
+_________________________________________________________________
+max_pooling2d (MaxPooling2D) (None, 100, 49, 49)       0         
+_________________________________________________________________
+conv2d_1 (Conv2D)            (None, 200, 48, 48)       80200     
+_________________________________________________________________
+dropout_1 (Dropout)          (None, 200, 48, 48)       0         
+_________________________________________________________________
+max_pooling2d_1 (MaxPooling2 (None, 200, 24, 24)       0         
+_________________________________________________________________
+conv2d_2 (Conv2D)            (None, 200, 22, 22)       360200    
+_________________________________________________________________
+dropout_2 (Dropout)          (None, 200, 22, 22)       0         
+_________________________________________________________________
+max_pooling2d_2 (MaxPooling2 (None, 200, 11, 11)       0         
+_________________________________________________________________
+conv2d_3 (Conv2D)            (None, 200, 10, 10)       160200    
+_________________________________________________________________
+dropout_3 (Dropout)          (None, 200, 10, 10)       0         
+_________________________________________________________________
+flatten (Flatten)            (None, 20000)             0         
+_________________________________________________________________
+dense (Dense)                (None, 200)               4000200   
+_________________________________________________________________
+dense_1 (Dense)              (None, 2)                 402       
+=================================================================
+Total params: 4,604,902
+Trainable params: 4,604,902
+Non-trainable params: 0
+_________________________________________________________________
+None
+Train on 1 samples, validate on 1 samples
+Epoch 1/20
+1/1 [==============================] - 2s 2s/step - loss: 0.6972 - acc: 0.0000e+00 - val_loss: 0.6941 - val_acc: 0.0000e+00
+
+Epoch 00001: saving model to ./checkpoint/cp.ckpt
+Epoch 2/20
+1/1 [==============================] - 0s 95ms/step - loss: 0.6914 - acc: 1.0000 - val_loss: 0.6928 - val_acc: 1.0000
+
+Epoch 00002: saving model to ./checkpoint/cp.ckpt
+Epoch 3/20
+1/1 [==============================] - 0s 86ms/step - loss: 0.6869 - acc: 1.0000 - val_loss: 0.6915 - val_acc: 1.0000
+
+Epoch 00003: saving model to ./checkpoint/cp.ckpt
+Epoch 4/20
+1/1 [==============================] - 0s 87ms/step - loss: 0.6843 - acc: 1.0000 - val_loss: 0.6902 - val_acc: 1.0000
+
+Epoch 00004: saving model to ./checkpoint/cp.ckpt
+Epoch 5/20
+1/1 [==============================] - 0s 85ms/step - loss: 0.6908 - acc: 1.0000 - val_loss: 0.6888 - val_acc: 1.0000
+
+Epoch 00005: saving model to ./checkpoint/cp.ckpt
+Epoch 6/20
+1/1 [==============================] - 0s 87ms/step - loss: 0.6837 - acc: 1.0000 - val_loss: 0.6875 - val_acc: 1.0000
+
+Epoch 00006: saving model to ./checkpoint/cp.ckpt
+Epoch 7/20
+1/1 [==============================] - 0s 83ms/step - loss: 0.6849 - acc: 1.0000 - val_loss: 0.6861 - val_acc: 1.0000
+
+Epoch 00007: saving model to ./checkpoint/cp.ckpt
+Epoch 8/20
+1/1 [==============================] - 0s 84ms/step - loss: 0.6822 - acc: 1.0000 - val_loss: 0.6846 - val_acc: 1.0000
+
+Epoch 00008: saving model to ./checkpoint/cp.ckpt
+Epoch 9/20
+1/1 [==============================] - 0s 78ms/step - loss: 0.6797 - acc: 1.0000 - val_loss: 0.6832 - val_acc: 1.0000
+
+Epoch 00009: saving model to ./checkpoint/cp.ckpt
+Epoch 10/20
+1/1 [==============================] - 0s 81ms/step - loss: 0.6671 - acc: 1.0000 - val_loss: 0.6818 - val_acc: 1.0000
+
+Epoch 00010: saving model to ./checkpoint/cp.ckpt
+Epoch 11/20
+1/1 [==============================] - 0s 79ms/step - loss: 0.6651 - acc: 1.0000 - val_loss: 0.6803 - val_acc: 1.0000
+
+Epoch 00011: saving model to ./checkpoint/cp.ckpt
+Epoch 12/20
+1/1 [==============================] - 0s 76ms/step - loss: 0.6676 - acc: 1.0000 - val_loss: 0.6788 - val_acc: 1.0000
+
+Epoch 00012: saving model to ./checkpoint/cp.ckpt
+Epoch 13/20
+1/1 [==============================] - 0s 86ms/step - loss: 0.6690 - acc: 1.0000 - val_loss: 0.6773 - val_acc: 1.0000
+
+Epoch 00013: saving model to ./checkpoint/cp.ckpt
+Epoch 14/20
+1/1 [==============================] - 0s 77ms/step - loss: 0.6597 - acc: 1.0000 - val_loss: 0.6758 - val_acc: 1.0000
+
+Epoch 00014: saving model to ./checkpoint/cp.ckpt
+Epoch 15/20
+1/1 [==============================] - 0s 82ms/step - loss: 0.6689 - acc: 1.0000 - val_loss: 0.6742 - val_acc: 1.0000
+
+Epoch 00015: saving model to ./checkpoint/cp.ckpt
+Epoch 16/20
+1/1 [==============================] - 0s 82ms/step - loss: 0.6616 - acc: 1.0000 - val_loss: 0.6725 - val_acc: 1.0000
+
+Epoch 00016: saving model to ./checkpoint/cp.ckpt
+Epoch 17/20
+1/1 [==============================] - 0s 84ms/step - loss: 0.6590 - acc: 1.0000 - val_loss: 0.6709 - val_acc: 1.0000
+
+Epoch 00017: saving model to ./checkpoint/cp.ckpt
+Epoch 18/20
+1/1 [==============================] - 0s 83ms/step - loss: 0.6526 - acc: 1.0000 - val_loss: 0.6693 - val_acc: 1.0000
+
+Epoch 00018: saving model to ./checkpoint/cp.ckpt
+Epoch 19/20
+1/1 [==============================] - 0s 80ms/step - loss: 0.6509 - acc: 1.0000 - val_loss: 0.6676 - val_acc: 1.0000
+
+Epoch 00019: saving model to ./checkpoint/cp.ckpt
+Epoch 20/20
+1/1 [==============================] - 0s 82ms/step - loss: 0.6473 - acc: 1.0000 - val_loss: 0.6659 - val_acc: 1.0000
+training.py:42: VisibleDeprecationWarning: Reading unicode strings without specifying the encoding argument is deprecated. Set the encoding, use None for the system default.
+  skip_header=1, dtype=None)
+training.py:58: VisibleDeprecationWarning: Reading unicode strings without specifying the encoding argument is deprecated. Set the encoding, use None for the system default.
+  val_label_data = np.genfromtxt(val_label_file,  delimiter=',', skip_header=1, dtype=None)
+
+Epoch 00020: saving model to ./checkpoint/cp.ckpt
+model trained
+Accuracy  [0.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0]
+Val accuracy:  [0.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0]

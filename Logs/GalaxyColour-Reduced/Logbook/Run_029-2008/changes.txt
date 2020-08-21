@@ -1,0 +1,5 @@
+Change from run 28 to run 29:
+Not sure if tweaked cnn architecture wrt last run, check cnn.py.
+Set a batch size of 128 in training to see if it had any effects; no apparent improvement in performance
+but greater consumption of RAM so not great.
+Ignore last part of nohup.out, accidentally ran script here.

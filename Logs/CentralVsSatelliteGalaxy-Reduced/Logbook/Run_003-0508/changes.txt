@@ -1,0 +1,4 @@
+Changes from run 2 to run 3:
+
+Remove print statement with history dictionary keys: reinstate plot of accuracy and val accuracy, fixing keys
+for history dictionary.

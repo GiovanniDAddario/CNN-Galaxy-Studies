@@ -1,0 +1,2 @@
+Changes from run 12 to run 13:
+Pull learning rate down by a lot to 1e-8, to try and force a change

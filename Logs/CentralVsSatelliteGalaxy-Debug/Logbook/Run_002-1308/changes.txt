@@ -1,0 +1,9 @@
+Changes from run 1 to 2:
+Yesterday, fixed testing (see Reduced dir); now define cnn model in separate script (cnn.py). Aside from checking that
+get 100 % accuracy in training (worked in run 1) want to see if testing accuracy switches between 0-100 %, as with a single
+image the model should overfit the training data and essentially guess with the testing data. Add multiple evaluations of 
+testing data in testing script to check this.
+Also reinstate callbacks.
+Repeated testing multiple times:
+First, saw that test file had same label as training one and assumed that was explanation for getting 100% accuracy in
+testing. So see what happens if have a mix of 0, 1 files in testing
