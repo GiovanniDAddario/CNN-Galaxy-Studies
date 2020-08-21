@@ -8,14 +8,14 @@ are saved to a checkpoint file to facilitate testing of the CNN.
 
 @author: Giovanni D'Addario & Alice Purdy
 """
-import matplotlib.pyplot as plt
 import numpy as np
 import os
 import tensorflow as tf
 import time
 
 from astropy.io import fits
-from tensorflow.keras import layers, models
+from cnn import cnn_model
+from tensorflow.keras import layers, models, optimizers
 
 
 start = time.perf_counter() # set a time counter for execution time
@@ -64,38 +64,13 @@ for index, row in enumerate(val_label_data):
     val_data[index] = data
     val_labels[index] = int(label)
 
-print('Data loaded ok')
-
-def cnn_model():
-    """
-    Defines a CNN model.
-    
-    Returns:
-    model : keras model: linear stack of layes
-    """
-    model = models.Sequential()
-    model.add(layers.Conv2D(32, (2,2), activation='relu', 
-                    data_format='channels_first', input_shape=file_shape))
-    model.add(layers.MaxPooling2D((2,2)))
-    model.add(layers.Conv2D(64, (3,3), activation='relu'))
-    model.add(layers.MaxPooling2D((2,2)))
-    model.add(layers.Conv2D(64, (3,3), activation='relu'))
-    model.add(layers.Flatten())
-    model.add(layers.Dense(64, activation='relu'))
-    model.add(layers.Dense(10))
-    
-    model.compile(optimizer='adam', 
-                  loss=tf.keras.losses.SparseCategoricalCrossentropy(
-                      from_logits=True), metrics=['accuracy'])
-     	
-    return model
-
 # create checkpoint to save model during and at the end of training. 
 checkpoint_path = "./checkpoint/cp.ckpt" # defines checkpoint path
 checkpoint_dir = os.path.dirname(checkpoint_path)
 
 # create a model instance
 model = cnn_model()
+print(model.summary())
 
 # create a callback that saves the model's weights
 cp_callback = tf.keras.callbacks.ModelCheckpoint(filepath=checkpoint_path, 
@@ -103,19 +78,12 @@ cp_callback = tf.keras.callbacks.ModelCheckpoint(filepath=checkpoint_path,
                                                  verbose=1)
 
 # train the model with the callback
-history = model.fit(train_data, train_labels, epochs=10,
+history = model.fit(train_data, train_labels, epochs=20,
                     validation_data=(val_data, val_labels),
  					callbacks=[cp_callback])
 
-fig = plt.figure(figsize=(10,10))
-plt.plot(history.history['accuracy'], c='blue', label='Training accuracy')
-plt.plot(history.history['val_accuracy'], c='red', 
-         label = 'Validation accuracy')
-plt.xlabel('Epoch')
-plt.ylabel('Accuracy')
-plt.ylim([0, 1])
-plt.legend(loc='lower right')
-plt.savefig('Accuracy')
+print('Accuracy ', history.history['acc'])
+print('Val accuracy: ', history.history['val_acc'])
 
 # elapsed time
 elapsed = time.perf_counter() - start

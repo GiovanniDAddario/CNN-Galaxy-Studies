@@ -12,10 +12,9 @@ import os
 import time
 
 from astropy.io import fits
-from training import cnn_model
+from cnn import cnn_model
 
 start = time.perf_counter() # set a time counter for execution time
-
 # set path to directory with files for testing the CNN
 test_data_dir = './test_dir'
 
@@ -42,7 +41,6 @@ for index, row in enumerate(test_label_data):
   test_data[index] = data
   test_labels[index] = int(label)
 
-
 # define the path to the checkpoint as defined in training script
 checkpoint_path = "./checkpoint/cp.ckpt"
 checkpoint_dir = os.path.dirname(checkpoint_path)
@@ -54,7 +52,7 @@ model = cnn_model()
 model.load_weights(checkpoint_path)
 
 # evaluate the model
-loss, acc = model.evaluate(test_data, test_labels, verbose=2)
+loss, acc = model.evaluate(test_data, test_labels, verbose=1)
 print("\nRestored model, accuracy: {:5.2f}%".format(100*acc))
 
 # elapsed time
