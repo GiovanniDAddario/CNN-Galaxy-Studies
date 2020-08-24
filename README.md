@@ -1,4 +1,4 @@
-# CNN-Galaxy-Studies
+# Characterising galaxies with Convolutional Neural Networks (CNNs)
 
 
 astropy:  3.1.1
